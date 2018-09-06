@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+  <div class="col s12 m8 offset-m1 xl7 offset-xl1">
+    {% for d in datas %}
+    <div id="scroll-{{ d.category-slug }}" class="section scrollspy">
+      <div class="row">
+        <div class="col s12">
+          <h3>{{ d.category-name }}</h3>
+          <div class="collection">
+            {% for a in d.articles %}
+            <a href="#!" class="collection-item">{{ a.name }}<span>{{ a.time }}</span></a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <!-- Table of contents -->
+  <div class="col hide-on-small-only m3 xl3 offset-xl1">
+    <div class="toc-wrapper pinned" style="top: 0px;">
+      <div style="height: 1px;">
+      <ul class="table-of-contents">
+        {% for d in datas %}
+        <li><a href="#scroll-{{ d.category-slug }}">{{ d.category-name }}</a></li>
+        {% endfor %}
+      </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

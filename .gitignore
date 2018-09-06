@@ -102,3 +102,70 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+<<<<<<< HEAD
+=======
+
+
+*.bak
+*.vscode
+
+# Mac OS
+.DS_Store
+.localized
+
+# Django
+media
+statics
+*.log
+
+# Vim
+*.swp
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+__pycache__
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+
+# Translations
+*.mo
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+conf/settings.ini
+conf/supervisord.conf
+shiba/shiba/conf/shiba_conf.py
+record/*
+tmp/*
+migrations/*
+
+
+# Mail
+mailuser.ini
+
+# deploy
+deploy/
+
+
+>>>>>>> 6d92fef... Init

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load markdown_change %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+{% endblock css %}
+
+{% block content %}
+<div class="row">
+  <div class="col s12 m8 offset-m1 xl7 offset-xl1">
+    <div class="main-content-wrap">
+    {{ article.content|markdown_change }}
+    </div>
+    <div data-disabled="google,facebook,twitter,qq,qzone,douban,tencent,linked,diandian"
+         data-wechat-qrcode-title="{{ article.title }}"
+         data-wechat-qrcode-helper="扫一扫分享到微信,朋友圈"
+         data-weibo-title="Junjielee's Blog: {{ article.title }}"
+         data-title="{{ article.title }}"
+         data-description="{{ article.title }}"
+         class="social-share" style="margin-top: 3em;"></div>
+  </div>
+</div>
+{% endblock content %}
+
+{% block javascript %}
+{{ block.super }}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+{% endblock javascript %}

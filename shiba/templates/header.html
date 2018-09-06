@@ -1,0 +1,35 @@
+{% load static %}
+<header>
+  <div class="container">
+    <a href="#" data-target="nav-mobile" class="top-nav sidenav-trigger waves-effect waves-light circle hide-on-large-only">
+      <i class="material-icons">menu</i>
+    </a>
+  </div>
+
+  <ul id="nav-mobile" class="sidenav sidenav-fixed" style="overflow: auto; transform: translateX(0%);">
+    <!-- <li>
+      <div class="user-view">
+        <div class="background">
+          <img src="https://materializecss.com/images/office.jpg">
+        </div>
+        <a href="#user"><img class="circle" src="{% static 'img/header.png' %}"></a>
+        <a href="#name"><span class="white-text name">Junjie Lee</span></a>
+        <a href="#email"><span class="white-text email">junjielee.kevin@gmail.com</span></a>
+      </div>
+    </li> -->
+    <li class="logo">
+      <img src="{% static 'img/header.png' %}" alt="头像">
+    </li>
+    <li class="search">
+      <div class="search-wrapper">
+        <input id="search" placeholder="Search"><i class="material-icons" onclick="M.toast({html: '开发中...'})">search</i>
+        <div class="search-results"></div>
+      </div>
+    </li>
+    <li class="bold"><a href="{% url 'blog.index' %}" class="waves-effect waves-teal">首页</a></li>
+    <li class="bold"><a href="{% url 'blog.category' %}" class="waves-effect waves-teal">文章分类</a></li>
+    <li onclick="M.toast({html: '开发中...'})" class="bold"><a href="#!" class="waves-effect waves-teal">职位分析平台<span class="new badge"></span></a></li>
+    <li class="bold"><a href="https://github.com/junjielee" target="_balank" class="waves-effect waves-teal">Github</a></li>
+    <li class="bold"><a href="{% url 'blog.article' slug='about-me' %}" class="waves-effect waves-teal">关于</a></li>
+  </ul>
+</header>

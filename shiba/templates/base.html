@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <title>{% block title %}{% endblock title %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="keywords" content="{% block keywords %}{% endblock keywords %}">
+  <meta name="description" content="{% block description %}{% endblock description %}">
+  <!--  Android 5 Chrome Color-->
+  <meta name="theme-color" content="#EE6E73">
+
+  {% block css %}
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" media="all" href="https://materializecss.com/css/ghpages-materialize.css">
+  <!-- <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/monokai.css' %}">
+  <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/base.css' %}"> -->
+  <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/base.css' %}">
+  <link rel="shortcut icon" href="http://7sbpjh.com1.z0.glb.clouddn.com/favicon.ico">
+  {% endblock css %}
+</head>
+<body>
+  {% block header %}{% include 'header.html' %}{% endblock header %}
+  <main>
+    {% block top %}{% include 'top.html' %}{% endblock top %}
+    <div class="container">
+    {% block content %}{% endblock content %}
+    </div>
+  </main>
+
+  {% block javascript %}
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+  <script>
+  M.AutoInit();
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, {'edge': 'left'});
+  });
+
+  // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
+  // var collapsibleElem = document.querySelector('.collapsible');
+  // var collapsibleInstance = M.Collapsible.init(collapsibleElem, options);
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+        
+    // $(".button-collapse").sideNav();
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.scrollspy');
+    var instances = M.ScrollSpy.init(elems, {'throttle': 100});
+  });
+
+  // Or with jQuery
+  function showActiveSidenav() {
+    var url = window.location.href;
+    url = url.slice(url.indexOf('//') + 2);
+    path = url.slice(url.indexOf('/'));
+
+    if (path == '/') {
+      console.log($("ul#nav-mobile > li.bold:first"))
+      $("ul#nav-mobile > li.bold:first").addClass('active');
+    } else {
+      $("ul#nav-mobile > li.bold").each(function(){
+        href = $(this).find('a').attr('href');
+        if (href != '/' && href != '#!' && path.includes(href)) {
+          $(this).addClass('active');
+        } 
+      });
+    }
+  }
+
+  $(document).ready(function(){
+    showActiveSidenav();
+  });
+
+  </script>
+  {% endblock javascript %}
+</body>
+</html>
