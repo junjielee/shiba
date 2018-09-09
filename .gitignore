@@ -102,8 +102,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
-<<<<<<< HEAD
-=======
 
 
 *.bak
@@ -165,7 +163,7 @@ migrations/*
 mailuser.ini
 
 # deploy
-deploy/
+# deploy/
 
 
 >>>>>>> 6d92fef... Init
