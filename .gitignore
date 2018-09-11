@@ -165,5 +165,4 @@ mailuser.ini
 # deploy
 # deploy/
 
-
->>>>>>> 6d92fef... Init
+deploy/inventory/vps

@@ -1,0 +1,11 @@
+---
+
+app_src_pkgname: "{{ app_name }}_{{ code_version }}.tar.gz"
+app_entry_path: "{{ deploy_target_path }}/{{ app_name }}_{{ code_version }}"
+django_settings_file: "{{ app_entry_path }}/{{ app_name }}/settings.py"
+django_cfg_file_path: "{{ app_entry_path }}/{{ app_name }}/conf"
+
+django_static_root: "{{ deploy_target_path }}/statics"
+django_media_root: "{{ deploy_target_path }}/media"
+django_static_url: "/static/"
+django_media_url: "/media/"

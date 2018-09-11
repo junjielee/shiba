@@ -57,7 +57,10 @@ class Article(TimeBaseModel):
 
     def save(self, *args, **kwargs):
         if self.file_used:
-            self.content = self.content_file.read()
+            content = self.content_file.read()
+            if isinstance(content, bytes):
+                content = content.decode('utf8')
+            self.content = content
         super(Article, self).save(*args, **kwargs)
 
     def get_tags(self):

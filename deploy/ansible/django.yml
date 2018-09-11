@@ -1,0 +1,8 @@
+---
+
+- hosts: "vps"
+  remote_user: "{{ remote_user }}"
+  roles:
+    - env
+    - django
+    - uwsgi
