@@ -12,13 +12,13 @@ from apps.blog.models import Article, Category
 
 
 def index(request):
-    articles = Article.objects.filter(pubished=True).values('title', 'slug', 'modified_time', 'content')
+    articles = Article.objects.filter(pubished=True).order_by('-create_time').values('title', 'slug', 'create_time', 'content')
     datas = []
     for a in articles:
         datas.append({
             "title": a['title'],
             "slug": a['slug'],
-            "time": a['modified_time'].strftime("%Y-%m-%d"),
+            "time": a['create_time'].strftime("%Y-%m-%d"),
             "content": _get_content(a['content'])[:200],
         })
     param_page = request.GET.get('page')
@@ -66,7 +66,7 @@ def category(request):
     #     {'category_slug': 'e', 'category_name': '沙巴2', 'articles': [{'name': 'b', 'time': "2018-08-05"}]},
     # ]
     datas = []
-    articles = list(Article.objects.filter(pubished=True).values('category', 'modified_time', 'title', 'slug'))
+    articles = list(Article.objects.filter(pubished=True).values('category', 'create_time', 'title', 'slug'))
     categories = Category.objects.all().values('id', 'slug', 'name')
     cid_2_category = {}
     for c in categories:
@@ -81,9 +81,13 @@ def category(request):
             data['articles'].append({
                 'slug': ga['slug'],
                 'name': ga['title'],
-                'time': ga['modified_time'].strftime('%Y-%m-%d %H:%M:%S'),
+                'time': ga['create_time'].strftime('%Y-%m-%d'),
             })
         datas.append(data)
+
+    # 每一个分类，按照time降序排列
+    for d in datas:
+        d['articles'].sort(key=itemgetter('time'), reverse=True)
 
     context = {'datas': datas}
     return render(request, 'blog/category.html', context=context)

@@ -7,14 +7,14 @@
 #index-banner h4 {
   margin-bottom: 0px;
 }
-ul.table-of-contents {
-  padding-top: 248px;
-}
 ul#nav-mobile > li.active {
   background-color: #26a69a;
 }
 ul#nav-mobile > li.active > a {
   color: white;
+}
+ul.table-of-contents {
+  padding-top: 248px;
 }
 
 /* global */
