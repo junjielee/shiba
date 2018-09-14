@@ -17,7 +17,7 @@
   <link rel="stylesheet" type="text/css" media="all" href="https://materializecss.com/css/ghpages-materialize.css">
   <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/monokai.css' %}">
   <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/base.css' %}">
-  <link rel="shortcut icon" href="http://7sbpjh.com1.z0.glb.clouddn.com/favicon.ico">
+  <link rel="shortcut icon" href="https://blog-1254604513.cosgz.myqcloud.com/image/base/favicon.ico">
   {% endblock css %}
 </head>
 <body>
@@ -79,6 +79,14 @@
   $(document).ready(function(){
     showActiveSidenav();
   });
+
+  $(document).on("click","#search-submit",function(){
+    var content = $("#search").val()
+    if (content != ""){
+      window.location.href = "{% url 'blog.index' %}?search=" + content
+    }
+  });
+
 
   </script>
   {% endblock javascript %}

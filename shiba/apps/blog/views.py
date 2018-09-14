@@ -2,6 +2,7 @@
 
 from operator import itemgetter
 from itertools import groupby
+from django.db.models import Q
 from django.shortcuts import render
 from django.conf import settings
 from django.core.paginator import Paginator
@@ -12,7 +13,13 @@ from apps.blog.models import Article, Category
 
 
 def index(request):
-    articles = Article.objects.filter(pubished=True).order_by('-create_time').values('title', 'slug', 'create_time', 'content')
+    search = request.GET.get('search', '')
+    if not search:
+        articles = Article.objects.filter(pubished=True)
+    else:
+        articles = Article.objects.filter(Q(title__icontains=search) & Q(pubished=True))
+    articles = articles.order_by('-create_time').values('title', 'slug', 'create_time', 'content')
+
     datas = []
     for a in articles:
         datas.append({
