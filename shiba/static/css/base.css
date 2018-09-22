@@ -16,6 +16,9 @@ ul#nav-mobile > li.active > a {
 ul.table-of-contents {
   padding-top: 248px;
 }
+.highlight {
+  padding: 5px 20px;
+}
 
 /* global */
 /* #main {
