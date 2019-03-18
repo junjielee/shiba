@@ -151,12 +151,14 @@ nosetests.xml
 .project
 .pydevproject
 
-conf/settings.ini
-conf/supervisord.conf
-shiba/shiba/conf/shiba_conf.py
 record/*
 tmp/*
-migrations/*
+
+media/*
+!media/.empty
+logs/*
+!logs/.empty
+config/localsettings.py
 
 
 # Mail

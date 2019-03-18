@@ -1,8 +1,0 @@
----
-
-- name: Upload uWSGI Config file
-  template: src=../uwsgi/uwsgi.conf dest={{ uwsgi_cfg_file }}
-
-
-- name: Start APP
-  command: "{{ exefile_uwsgi }} -y {{ uwsgi_cfg_file }}"

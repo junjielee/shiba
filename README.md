@@ -11,9 +11,9 @@
 
 ```python
 # 创建配置文件
-cd shiba/conf/ && cp shiba_conf_example.py shiba_conf.py
+cp config/localsettings.py.default config/localsettings.py
 
-# 然后修改 shiba_conf.py内容：包括数据库连接信息
+# 然后修改 localsettings.py内容：包括数据库连接信息
 
 # 创建数据库表
 python manage.py migrate
@@ -26,12 +26,4 @@ python manage.py runserver 127.0.0.1:9998
 ## 远程部署
 
 ```python
-# 创建并且修改inventry文件
-cd deploy/inventory/ && cp vps_example vps
-
-# 然后修改 vps文件内容
-
-# 返回到deploy目录下，执行命令部署到远端
-ansible-playbook ./ansible/django.yml -i ./inventory/vps -v --ask-pass -u remote_user
-
 ```
