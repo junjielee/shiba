@@ -1,0 +1,19 @@
+[uwsgi]
+chdir=/home/lijunjie/apps/shiba
+module=config.wsgi:application
+master=true
+socket=/tmp/shiba.sock
+chmod-socket=666
+pidfile=%(chdir)/shiba.pid
+touch-reload=reload
+vacuum=true
+processes=2
+max-requests=5000
+logformat = %(ltime) %(host)[%(addr)] "%(proto) %(status) %(method) %[[0;32m%(uri)%[[0m" %[[0;31m%(msecs)%[[0mms
+logto=%(chdir)/logs/uwsgi.log
+log-maxsize = 50000000
+post-buffering=1
+buffer-size=8192
+enable-threads=true
+uid=lijunjie
+gid=lijunjie
